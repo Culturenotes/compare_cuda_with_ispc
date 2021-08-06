@@ -1,0 +1,2 @@
+C:\Users\50510\Desktop\compare_cuda_with_ispc\x64\Release\compare_cuda_with_ispc.exe
+C:\Users\50510\Desktop\compare_cuda_with_ispc\compare_cuda_with_ispc\x64\Release\compare_cuda_with_ispc.exe

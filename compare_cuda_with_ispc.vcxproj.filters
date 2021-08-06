@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CudaCompile Include="cublas_.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ispc\tasksys.cpp">
+      <Filter>ispc</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="martix.hpp" />
+    <ClInclude Include="ispc\ispc.hpp">
+      <Filter>ispc</Filter>
+    </ClInclude>
+    <ClInclude Include="ispc\SGEMM_kernels_ispc.h">
+      <Filter>ispc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="External">
+      <UniqueIdentifier>{83f550cf-718c-4ed3-8a01-37d4bd0bc0c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ispc">
+      <UniqueIdentifier>{6280f116-8c12-43a9-a2a0-ccd0f6e96850}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="External\ispc.exe">
+      <Filter>External</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="ispc\SGEMM_kernels_ispc.ispc">
+      <Filter>ispc</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

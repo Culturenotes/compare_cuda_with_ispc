@@ -1,0 +1,44 @@
+﻿  Compiling CUDA source file cublas_.cpp...
+  
+  C:\Users\50510\Desktop\compare_cuda_with_ispc\compare_cuda_with_ispc>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\bin\HostX86\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.0\include"     --keep-dir x64\Release -maxrregcount=0  --machine 64 --compile -cudart shared    -use_fast_math -DNDEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Fdx64\Release\vc142.pdb /FS /Zi  /MD " -o x64\Release\cublas_.cpp.obj "C:\Users\50510\Desktop\compare_cuda_with_ispc\compare_cuda_with_ispc\cublas_.cpp" 
+  cublas_.cpp
+C:/Users/50510/Desktop/compare_cuda_with_ispc/compare_cuda_with_ispc/cublas_.cpp(904): warning C4244: “初始化”: 从“float”转换到“T2”，可能丢失数据
+          with
+          [
+              T2=int
+          ]
+  C:/Users/50510/Desktop/compare_cuda_with_ispc/compare_cuda_with_ispc/cublas_.cpp(1181): note: 查看对正在编译的函数 模板 实例化“void cublas_kernel<char,int>(void)”的引用
+C:/Users/50510/Desktop/compare_cuda_with_ispc/compare_cuda_with_ispc/cublas_.cpp(904): warning C4244: “初始化”: 从“float”转换到“T2”，可能丢失数据
+          with
+          [
+              T2=int
+          ]
+C:/Users/50510/Desktop/compare_cuda_with_ispc/compare_cuda_with_ispc/cublas_.cpp(438): warning C4244: “初始化”: 从“float”转换到“T2”，可能丢失数据
+          with
+          [
+              T2=int
+          ]
+  C:/Users/50510/Desktop/compare_cuda_with_ispc/compare_cuda_with_ispc/cublas_.cpp(1182): note: 查看对正在编译的函数 模板 实例化“void cublas_kernel_asny<char,int>(void)”的引用
+C:/Users/50510/Desktop/compare_cuda_with_ispc/compare_cuda_with_ispc/cublas_.cpp(438): warning C4244: “初始化”: 从“float”转换到“T2”，可能丢失数据
+          with
+          [
+              T2=int
+          ]
+C:\Users\50510\Desktop\compare_cuda_with_ispc\compare_cuda_with_ispc\martix.hpp(121): warning C4244: “初始化”: 从“float”转换到“T2”，可能丢失数据
+          with
+          [
+              T2=int
+          ]
+  C:/Users/50510/Desktop/compare_cuda_with_ispc/compare_cuda_with_ispc/cublas_.cpp(222): note: 查看对正在编译的函数 模板 实例化“void cpu_matrix_mult<T1,T2>(T1 *,T1 *,int,int,int,T2 *,T2 *,int)”的引用
+          with
+          [
+              T1=int,
+              T2=int
+          ]
+  C:/Users/50510/Desktop/compare_cuda_with_ispc/compare_cuda_with_ispc/cublas_.cpp(1159): note: 查看对正在编译的函数 模板 实例化“void My_kernel<int,int>(void)”的引用
+C:\Users\50510\Desktop\compare_cuda_with_ispc\compare_cuda_with_ispc\martix.hpp(122): warning C4244: “初始化”: 从“float”转换到“T2”，可能丢失数据
+          with
+          [
+              T2=int
+          ]
+  compare_cuda_with_ispc.vcxproj -> C:\Users\50510\Desktop\compare_cuda_with_ispc\compare_cuda_with_ispc\x64\Release\compare_cuda_with_ispc.exe

@@ -1,0 +1,2 @@
+^C:\USERS\50510\DESKTOP\COMPARE_CUDA_WITH_ISPC\COMPARE_CUDA_WITH_ISPC\ISPC\SGEMM_KERNELS_ISPC.ISPC
+C:\Users\50510\Desktop\compare_cuda_with_ispc\compare_cuda_with_ispc\\External\ispc -O2 C:\Users\50510\Desktop\compare_cuda_with_ispc\compare_cuda_with_ispc\ispc\SGEMM_kernels_ispc.ispc -o C:\Users\50510\Desktop\compare_cuda_with_ispc\compare_cuda_with_ispc\ispc\SGEMM_kernels_ispc.obj -h C:\Users\50510\Desktop\compare_cuda_with_ispc\compare_cuda_with_ispc\ispc\SGEMM_kernels_ispc.h --opt=fast-math --arch=x86-64
