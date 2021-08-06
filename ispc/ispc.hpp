@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "SGEMM_kernels_ispc.h"
-#include "martix.hpp"
+#include "matrix.hpp"
 
 
 bool tasks;
@@ -97,11 +97,11 @@ void cpu_ispc() {
     cudaHostAlloc((void**)&h_CC, sizeof(T2) * A_ROW * B_COL, cudaHostAllocDefault);
     */
 
-    //³õÊ¼»¯¾ØÕó
+    //åˆå§‹åŒ–çŸ©é˜µ
     MatrixINIT<T1>(A_ROW, A_COL, h_A);
     MatrixINIT<T1>(B_ROW, B_COL, h_B);
    
-    //´òÓ¡¾ØÕó
+    //æ‰“å°çŸ©é˜µ
     //Matrixshow<T1>("A", A_ROW, A_COL, h_A, 1);
     //Matrixshow<T1>("B", B_ROW, B_COL, h_B, 1);
 
@@ -119,12 +119,12 @@ void cpu_ispc() {
         h_C, A_ROW, A_COL, B_COL, tasks);
 #endif
     TIMER_STOP(t);
-    cout << "ISPCµ¥ÈÎÎñ»¨·ÑÁË£º" << TIMER_MSEC(t) << " ms " << endl << endl;
+    cout << "ISPCå•ä»»åŠ¡èŠ±è´¹äº†ï¼š" << TIMER_MSEC(t) << " ms " << endl << endl;
 
     cout << endl;
 
-    //´òÓ¡½á¹û
-    //Matrixshow<T2>("ISPC ¼ÆËã½á¹ûCµÄÖµ:", A_ROW, B_COL, h_C, 1,0);
+    //æ‰“å°ç»“æœ
+    //Matrixshow<T2>("ISPC è®¡ç®—ç»“æœCçš„å€¼:", A_ROW, B_COL, h_C, 1,0);
 #if defined(USE_CPU_COST)
     cpu_matrix_mult<T1, T2>(h_A, h_B, A_ROW, A_COL, B_COL, h_C, h_CC, 0);
 #endif 
@@ -144,11 +144,11 @@ void cpu_ispc() {
 #endif
     TIMER_STOP(X);
 
-    cout << "ISPC¶àÈÎÎñ»¨·ÑÁË£º" << TIMER_MSEC(X) << " ms " << endl << endl;
+    cout << "ISPCå¤šä»»åŠ¡èŠ±è´¹äº†ï¼š" << TIMER_MSEC(X) << " ms " << endl << endl;
     cout << endl;
 
-    //´òÓ¡½á¹û
-    //Matrixshow<T2>("ISPC ¼ÆËã½á¹ûCµÄÖµ:", A_ROW, B_COL, h_C, 1, 0);
+    //æ‰“å°ç»“æœ
+    //Matrixshow<T2>("ISPC è®¡ç®—ç»“æœCçš„å€¼:", A_ROW, B_COL, h_C, 1, 0);
 
 #if defined(USE_CPU_COST)
     cpu_matrix_mult<T1, T2>(h_A, h_B, A_ROW, A_COL, B_COL, h_C, h_CC, 0);
