@@ -12,15 +12,15 @@
 
 using namespace std;
 
-//²âÊÔ´ÎÊı
+//æµ‹è¯•æ¬¡æ•°
 #define N 500
 
-//×Ô¼ºµÄcudaºËº¯Êı
+//è‡ªå·±çš„cudaæ ¸å‡½æ•°
 #define USE_MY_INT
 //#define USE_MY_FLOAT
 //#define USE_MY_DOUBLE
 
-//cublasµÄ¾ØÕó¼ÆËã
+//cublasçš„çŸ©é˜µè®¡ç®—
 #define USE_INT8_T
 //#define USE_INT8_N
 //#define USE_FLOAT_T
@@ -28,16 +28,16 @@ using namespace std;
 //#define USE_DOUBLE_T
 //#define USE_DOUBLE_N
 
-//ISPCµÄ¾ØÕó¼ÆËã
+//ISPCçš„çŸ©é˜µè®¡ç®—
 #define USE_ISPC_INT
 //#define USE_ISPC_FLOAT
 //#define USE_ISPC_DOUBLE
 
-//ÊÇ·ñ¿ªÊ¼ÑéÖ¤¾ØÕóÕıÈ·ºÍcpuµÄ¼ÆËãÊ±¼ä
+//æ˜¯å¦å¼€å§‹éªŒè¯çŸ©é˜µæ­£ç¡®å’Œcpuçš„è®¡ç®—æ—¶é—´
 #define USE_CPU_COST
 
 
-//¾ØÕóA¡¢B¡¢CµÄĞĞÊıÁĞÊı
+//çŸ©é˜µAã€Bã€Cçš„è¡Œæ•°åˆ—æ•°
 int const A_ROW = 512;
 int const A_COL = 512;
 
@@ -45,15 +45,15 @@ int const B_ROW = 512;
 int const B_COL = 512;
 
 
-// ÓÃTIMER_START ¶¨ÒåÒ»¸ö±äÁ¿¼ÇÂ¼¿ªÊ¼µÄÊ±¼ä
+// ç”¨TIMER_START å®šä¹‰ä¸€ä¸ªå˜é‡è®°å½•å¼€å§‹çš„æ—¶é—´
 #define TIMER_START(_X) auto _X##_start = std::chrono::system_clock::now(), _X##_stop = _X##_start
-// ÓÃTIMER_STOP ¶¨ÒåÒ»¸ö±äÁ¿¼ÇÂ¼½áÊøµÄÊ±¼ä
+// ç”¨TIMER_STOP å®šä¹‰ä¸€ä¸ªå˜é‡è®°å½•ç»“æŸçš„æ—¶é—´
 #define TIMER_STOP(_X) _X##_stop = std::chrono::system_clock::now()
-// TIMER_MSEC ¶¨Òåstartµ½stop¾­Àú¶àÉÙºÁÃë
+// TIMER_MSEC å®šä¹‰startåˆ°stopç»å†å¤šå°‘æ¯«ç§’
 #define TIMER_MSEC(_X) (1e-3 * std::chrono::duration_cast<std::chrono::microseconds>(_X##_stop - _X##_start).count())
 
 template <typename T>
-//Ä¬ÈÏ´òÓ¡³õÊ¼»¯¾ØÕóÊıÖµshowÎª1
+//é»˜è®¤æ‰“å°åˆå§‹åŒ–çŸ©é˜µæ•°å€¼showä¸º1
 void  MatrixINIT(int ROW, int COL, T* Matrix)
 {
     for (int i = 0; i < ROW; i++) {
@@ -65,11 +65,11 @@ void  MatrixINIT(int ROW, int COL, T* Matrix)
 }
 
 template <typename T>
-//TµÈ0±íÊ¾²»×ªÖÃ,1±íÊ¾×ªÖÃ¡£
+//Tç­‰0è¡¨ç¤ºä¸è½¬ç½®,1è¡¨ç¤ºè½¬ç½®ã€‚
 void Matrixshow(string matrix, int ROW, int COL, T* Matrix, int show = 0, int T_OR_N = 0, string T_ = "None")
 {
     if (show) {
-        cout << "¾ØÕó" << matrix << ":" << endl << endl;
+        cout << "çŸ©é˜µ" << matrix << ":" << endl << endl;
         for (int i = 0; i < ROW; i++)
         {
             for (int j = 0; j < COL; j++)
@@ -77,22 +77,22 @@ void Matrixshow(string matrix, int ROW, int COL, T* Matrix, int show = 0, int T_
                 if (T_OR_N)
                 {
                     if (T_ == "char") {
-                        cout << (int)Matrix[j * ROW + i] << " "; //×ªÖÃ£¬°´ĞĞÓÅÏÈË³Ğò¶ÁÈ¡h_CÏàµ±ÓÚ×öÁËCTµÄ½á¹û
+                        cout << (int)Matrix[j * ROW + i] << " "; //è½¬ç½®ï¼ŒæŒ‰è¡Œä¼˜å…ˆé¡ºåºè¯»å–h_Cç›¸å½“äºåšäº†CTçš„ç»“æœ
                     }
                     else
                     {
-                        cout << (T)Matrix[j * ROW + i] << " "; //×ªÖÃ£¬°´ĞĞÓÅÏÈË³Ğò¶ÁÈ¡h_CÏàµ±ÓÚ×öÁËCTµÄ½á¹û
+                        cout << (T)Matrix[j * ROW + i] << " "; //è½¬ç½®ï¼ŒæŒ‰è¡Œä¼˜å…ˆé¡ºåºè¯»å–h_Cç›¸å½“äºåšäº†CTçš„ç»“æœ
                     }
 
                 }
                 else
                 {
                     if (T_ == "char") {
-                        cout << (int)Matrix[i * COL + j] << " ";//²»×ªÖÃ£¬°´ĞĞ¶ÁÈ¡h_CÏàµ±ÓÚ×öÁËCTT=CµÄ½á¹û
+                        cout << (int)Matrix[i * COL + j] << " ";//ä¸è½¬ç½®ï¼ŒæŒ‰è¡Œè¯»å–h_Cç›¸å½“äºåšäº†CTT=Cçš„ç»“æœ
                     }
                     else
                     {
-                        cout << (T)Matrix[i * COL + j] << " ";//²»×ªÖÃ£¬°´ĞĞ¶ÁÈ¡h_CÏàµ±ÓÚ×öÁËCTT=CµÄ½á¹û
+                        cout << (T)Matrix[i * COL + j] << " ";//ä¸è½¬ç½®ï¼ŒæŒ‰è¡Œè¯»å–h_Cç›¸å½“äºåšäº†CTT=Cçš„ç»“æœ
                     }
                 }
             }
@@ -104,12 +104,12 @@ void Matrixshow(string matrix, int ROW, int COL, T* Matrix, int show = 0, int T_
 }
 
 template <typename T1, typename T2>
-//TµÈ0±íÊ¾²»×ªÖÃ,1±íÊ¾×ªÖÃ¡£
+//Tç­‰0è¡¨ç¤ºä¸è½¬ç½®,1è¡¨ç¤ºè½¬ç½®ã€‚
 void cpu_matrix_mult(T1* h_a, T1* h_b, int m, int n, int k, T2* h_C, T2* h_CC, int T_OR_N = 0)
 {
     T2 t;
     TIMER_START(_X);
-    //Í¬Ñù¼ÆËã500´Î
+    //åŒæ ·è®¡ç®—500æ¬¡
 
     for (int kk = 0; kk < N; kk++)
     {
@@ -132,7 +132,7 @@ void cpu_matrix_mult(T1* h_a, T1* h_b, int m, int n, int k, T2* h_C, T2* h_CC, i
         }
     }
     TIMER_STOP(_X);
-    cout << "CPUºÄ·ÑÁË: " << TIMER_MSEC(_X) << " ms " << "\n";
+    cout << "CPUè€—è´¹äº†: " << TIMER_MSEC(_X) << " ms " << "\n";
   
     bool ok = 1;
 
